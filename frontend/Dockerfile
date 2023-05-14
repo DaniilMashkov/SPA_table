@@ -7,6 +7,9 @@ WORKDIR /code/frontend/
 COPY package.json /code/frontend/package.json
 COPY package-lock.json /code/frontend/package-lock.json
 
+RUN npm install
+
 COPY . /code/frontend/
 
-CMD [ "npm", "start" ]
+CMD ["npm", "run", "build"]
+CMD ["npm", "run", "serve"]
