@@ -8,6 +8,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         test_data = []
+        TableFields.objects.all().delete()
+
         for i in range(150):
             test_data.append(
                 TableFields(

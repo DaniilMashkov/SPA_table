@@ -1,10 +1,11 @@
 import './App.css';
-import tableApi from './service/table'
+import Table from './service/table'
 import {useEffect, useState} from "react";
 import {range} from "./utils/range";
 import Toast from './components/Toast'
 
 function App() {
+  const tableApi = new Table()
   const [item, setItem] = useState([])
   const [totalPages, setTotalPages] = useState(0)
   const [column, setColumn] = useState('')

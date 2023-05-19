@@ -41,17 +41,14 @@ services:
   frontend:
     build:
       context: frontend
-    volumes:
-      - ./frontend/:/code/frontend
-    depends_on:
-      backend:
-        condition: service_started
-    ports:
-      - '3000:3000'
-    links:
-      - backend
+      target: development
     networks:
       - client-side
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/code/src:ro
+
 
 networks:
   client-side: {}

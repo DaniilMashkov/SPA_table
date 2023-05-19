@@ -1,15 +1,20 @@
-FROM node:lts
+FROM node:lts AS development
 
 ENV CI=true
 ENV PORT=3000
 
-WORKDIR /code/frontend/
-COPY package.json /code/frontend/package.json
-COPY package-lock.json /code/frontend/package-lock.json
+WORKDIR /code
+COPY package.json /code/package.json
+COPY package-lock.json /code/package-lock.json
+RUN npm ci
+COPY . /code
 
-RUN npm install
+CMD [ "npm", "start" ]
 
-COPY . /code/frontend/
+FROM development AS builder
 
-CMD ["npm", "run", "build"]
-CMD ["npm", "run", "serve"]
+RUN npm run build
+
+FROM nginx:1.23-alpine
+
+COPY --from=builder /code/build /usr/share/nginx/html

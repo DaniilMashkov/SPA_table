@@ -7,4 +7,4 @@ class Table {
 	}
 }
 
-export default new Table()
+export default Table
