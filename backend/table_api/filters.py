@@ -10,4 +10,3 @@ class TableFilter:
             return queryset.filter(**{lookup: params.get('query')})
 
         return queryset
-

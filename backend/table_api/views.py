@@ -18,4 +18,7 @@ class TableFieldsListAPIView(generics.ListAPIView):
                 content_type='application/json')
 
     def get_queryset(self):
-        return TableFilter.filter(self.request.query_params, TableFields.objects.all())
+        return TableFilter.filter(
+            self.request.query_params,
+            TableFields.objects.all()
+        )
