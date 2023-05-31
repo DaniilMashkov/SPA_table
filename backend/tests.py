@@ -1,11 +1,15 @@
+"""
+To start test tests as a python module
+
 import django
 import os
-import pathlib
-path = pathlib.Path(__file__).parents[1]
+
 os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
-# print(os.environ['DJANGO_SETTINGS_MODULE'])
 django.setup()
-from rest_framework.test import APITestCase, APIClient
+
+"""
+
+from rest_framework.test import APITestCase
 from rest_framework import status
 from django.core.management import call_command
 
